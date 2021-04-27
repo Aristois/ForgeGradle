@@ -28,12 +28,12 @@ repositories {
     mavenLocal()
     maven {
         name = "forge"
-        url = "https://files.minecraftforge.net/maven"
+        url = "https://maven.minecraftforge.net"
     }
     maven {
         // because Srg2Source needs an eclipse dependency.
         name = "eclipse"
-        url = "https://repo.eclipse.org/content/groups/eclipse/"
+        url = 'https://gitlab.com/EMC-Framework/maven/raw/master/'
     }
     jcenter() // get as many deps from here as possible
     mavenCentral()
@@ -173,11 +173,6 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 artifacts {
     archives jar
     archives javadocJar
-}
-
-test {
-    if (project.hasProperty("filesmaven")) // disable this test when on the forge jenkins
-        exclude "**/ExtensionMcpMappingTest*"
 }
 
 pluginBundle {
